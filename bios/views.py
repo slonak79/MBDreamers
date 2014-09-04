@@ -10,8 +10,8 @@ def index(request):
     response = render(request, "bios/index.html", context)
     return response
 
-def individual(request):
-    author = Author.objects.get_queryset().filter(request.POST['author'])
+def individual(request, name):
+    author = Author.objects.get_queryset().filter(first_name=name)
     context = {}
     context['author'] = author
     return render(request, 'bios/author.html', context)
